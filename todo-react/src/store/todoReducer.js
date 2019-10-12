@@ -10,8 +10,13 @@ export default function(estadoActual = estadoInicial, action)
 {
     switch (action.type) {
         case 'ADD_ITEM':
-
-            break;
+            var nuevoItem = action.data;
+            return {
+                taskList: [
+                    ...estadoActual.taskList,
+                    nuevoItem
+                ]
+            }
         case 'REMOVE_ITEM':
 
             break;
@@ -19,8 +24,6 @@ export default function(estadoActual = estadoInicial, action)
             return {
                 taskList: action.data
             }
-
-            break;
         case 'UPDATE_ITEM':
 
             break;
