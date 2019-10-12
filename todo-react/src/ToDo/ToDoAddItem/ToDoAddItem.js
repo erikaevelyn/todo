@@ -7,12 +7,29 @@ export default class ToDoAddItem extends React.Component {
     constructor(props) {
         super(props);
         this.toDoService = new ToDoService(); // Instancio el servicio
+        // Binding
+        this.addItem = this.addItem.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        // Estado (puede ir fuera del constructor también)
+        this.state = {
+            inputTarea: ''
+        }
 
     }
 
-    addItem(event) {
+    addItem() {
+        // this.state.inputTarea
+        alert('A name was submitted: ' + this.state.inputTarea );
+    }
 
-        alert('A name was submitted: ' + event );
+    /**
+     * Se actualiza el estado (inputTarea) cada vez que el usuario modifica el input
+     * @param {event} e 
+     */
+    handleChange(e) {
+        this.setState({
+            inputTarea: e.target.value
+        });
     }
 
 
@@ -22,7 +39,7 @@ export default class ToDoAddItem extends React.Component {
                 <div className="container px-lg-5">
                 <div className="row">
                     <div className="col">
-                        <input type="form" className="form-control" id="inputTarea"
+                        <input type="form" className="form-control" id="inputTarea" onChange={this.handleChange} value={this.state.inputTarea}
                                />
                         <small className="form-text text-muted">Ingresar la tarea a realizar</small>
                     </div>
@@ -37,7 +54,7 @@ export default class ToDoAddItem extends React.Component {
                         <small id="responsable" className="form-text text-muted">Seleccionar un responsable</small>
                     </div>
                     <div className="col">
-                        <button onClick={this.addItem(this.inputTarea)} className="btn btn-primary" > <i className="material-icons">
+                        <button onClick={this.addItem} className="btn btn-primary" > <i className="material-icons">
                             note_add
                         </i></button>
                     </div>
@@ -47,8 +64,3 @@ export default class ToDoAddItem extends React.Component {
         )
     }
 }
-
-
-
-
-
