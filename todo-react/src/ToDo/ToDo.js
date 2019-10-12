@@ -1,39 +1,63 @@
 import React from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
 import ToDoItem from "./ToDoItem/ToDoItem";
+import ToDoAddItem from "./ToDoAddItem/ToDoAddItem";
+import ToDoService from '../services/ToDoService';
 
-export default class ToDo extends React.Component {
+class ToDo extends React.Component {
 
-    state = {
-        listaTareas: []
+    constructor(props) {
+        super(props);
+        this.toDoService = new ToDoService(); // Instancio el servicio
     }
+
     async componentDidMount() {
-        var respuesta = await axios.get('https://toodoapi220190926085529.azurewebsites.net/api/TodoItems');
-        if (respuesta.status===200) {
-            console.log("ok");
-        }
-        this.setState({listaTareas: respuesta.data});
+        var respuesta = await this.toDoService.getTareas(); // Uso el servicio instanciado
+        this.props.onInit(respuesta);
     }
 
 
     render() {
 
-        var lista = this.state.listaTareas.map(item => {
-            console.log(this.state.listaTareas.length);
+        var listado = this.props.listado.map(unItem => {
             return (
+
                     <ToDoItem
-                        key={item.id}
-                        textoTitle={item.name}/>
+                        key={unItem.id}
+                        itemId={unItem.id}
+                        textoTitle={unItem.name}/>
+
             )
         })
 
         return (
             <div>
-                <blockquote className="blockquote">
-                    <h2 className="mb-0">Lista de tareas abiertas</h2>
-                </blockquote>
-                {lista}
+                <div className="jumbotron jumbotron-fluid">
+                    <div className="container">
+                        <h1 className="display-4">Lista de tareas</h1>
+                        <p className="lead">Agrega, modifica y elimina tareas. Asignalas a un responsable que sera notificado por correo
+                        electronico.</p>
+                    </div>
+                </div>
+                <ul className="list-group">
+                {listado}
+                </ul>
+                <br/>
+                <ToDoAddItem/>
             </div>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        listado: state.taskList,
+    }
+}
+
+const mapActions = (dispatch) => {
+    return {
+        onInit: (listado) => dispatch({type: 'INIT', data: listado})
+    }
+}
+export default connect(mapStateToProps, mapActions)(ToDo);

@@ -2,22 +2,27 @@ import React from 'react';
 
 export default class ToDoItem extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
 
     render() {
         return (
-            <div className="card mb-3" className="card bg-light mb-3">
-                <div className="row no-gutters">
-                    <div className="col-md-8">
-                        <div className="card-body">{this.props.textoTitle}
-                        </div>
+            <div className="container px-lg-5">
+                <div className="row">
+                    <div className="col">
+                        <button type="button"
+                                className="list-group-item list-group-item-action">{this.props.itemId} - {this.props.textoTitle}
+                        </button>
+                    </div>
+                    <div className="col">
+                        <button className="btn btn-danger"><i className="material-icons" color="warn">
+                            delete_sweep
+                        </i></button>
                     </div>
                 </div>
             </div>
-
         );
     }
 }
