@@ -1,8 +1,7 @@
 import React from 'react';
 import ToDoService from '../../services/ToDoService';
 import {connect} from "react-redux";
-
-export default class ToDoAddItem extends React.Component {
+ class ToDoAddItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,16 +19,20 @@ export default class ToDoAddItem extends React.Component {
     }
 
     addItem() {
+        var parentThis = this;
         this.toDoService.postTarea( {
             name: this.state.inputTarea,
             isComplete: false
         })
             .then(function (response) {
                 console.log(response);
+                parentThis.props.onAdd(response);
             })
             .catch(function (error) {
                 console.log(error);
-            });;
+            });
+
+        /* Otra opcion es con Async Await */            
     }
 
     /**
@@ -81,3 +84,12 @@ export default class ToDoAddItem extends React.Component {
         )
     }
 }
+
+// this.props.onAdd es la comunicacion con el reducer (para agregarlo al listado)
+var mapToActions = function(dispatch) {
+    return {
+        onAdd: (nuevoItem) => dispatch({type: 'ADD_ITEM', data: nuevoItem})
+    }
+}
+
+export default connect(null, mapToActions)(ToDoAddItem);
