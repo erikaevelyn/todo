@@ -9,7 +9,8 @@ class ToDoItem extends React.Component {
         this.toDoService = new ToDoService();
     }
 
-    deleteItem(id) {
+    deleteItem() {
+        var id = this.props.itemId;
         var parentThis = this;
         this.toDoService.deleteTarea(id)
             .then(function (response) {
@@ -32,7 +33,7 @@ class ToDoItem extends React.Component {
                         </button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-danger" onClick={this.deleteItem(this.props.itemId)}><i className="material-icons" color="warn">
+                        <button className="btn btn-danger" onClick={this.deleteItem}><i className="material-icons" color="warn">
                             delete_sweep
                         </i></button>
                     </div>
