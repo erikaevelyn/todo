@@ -44,7 +44,7 @@ class ToDoItem extends React.Component {
 
 var mapToActions = function(dispatch) {
     return {
-        onDel: (itemId) => dispatch({type: 'REMOVE_ITEM', data: itemId})
+        onDel: (id) => dispatch({type: 'REMOVE_ITEM', data: id})
     }
 }
 
