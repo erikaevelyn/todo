@@ -1,6 +1,6 @@
 import React from 'react';
 import ToDoService from '../../services/ToDoService';
-import {connect} from "react-redux";
+
 
 export default class ToDoAddItem extends React.Component {
 

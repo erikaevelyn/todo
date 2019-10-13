@@ -1,9 +1,21 @@
 import React from 'react';
+import ToDoService from '../../services/ToDoService';
 
 export default class ToDoItem extends React.Component {
 
     constructor(props) {
         super(props);
+        this.toDoService = new ToDoService();
+    }
+
+    deleteItem(id) {
+        this.toDoService.deleteTarea(id )
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });;
     }
 
 
@@ -17,7 +29,7 @@ export default class ToDoItem extends React.Component {
                         </button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-danger"><i className="material-icons" color="warn">
+                        <button className="btn btn-danger" onClick={this.deleteItem(this.props.itemId)}><i className="material-icons" color="warn">
                             delete_sweep
                         </i></button>
                     </div>
