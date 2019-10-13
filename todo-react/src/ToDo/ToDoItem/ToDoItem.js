@@ -1,7 +1,8 @@
 import React from 'react';
 import ToDoService from '../../services/ToDoService';
+import {connect} from "react-redux";
 
-export default class ToDoItem extends React.Component {
+class ToDoItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -9,9 +10,11 @@ export default class ToDoItem extends React.Component {
     }
 
     deleteItem(id) {
-        this.toDoService.deleteTarea(id )
+        var parentThis = this;
+        this.toDoService.deleteTarea(id)
             .then(function (response) {
                 console.log(response);
+                parentThis.props.onDel(id);
             })
             .catch(function (error) {
                 console.log(error);
@@ -38,3 +41,11 @@ export default class ToDoItem extends React.Component {
         );
     }
 }
+
+var mapToActions = function(dispatch) {
+    return {
+        onDel: (itemId) => dispatch({type: 'REMOVE_ITEM', data: itemId})
+    }
+}
+
+export default connect(null, mapToActions)(ToDoItem);
