@@ -13,7 +13,6 @@ using Microsoft.IdentityModel.Tokens;
 using TodoApi.Dto;
 using TodoApi.Models;
 
-
 namespace TodoApi.Controllers
 {
     [Route("api/[controller]/[action]")]
@@ -69,7 +68,7 @@ namespace TodoApi.Controllers
             }
         }
         
-        private string GenerateJwtToken(string email, ApplicationUser user)
+        private string GenerateJwtToken(string email, IdentityUser user)
         {
             var claims = new List<Claim>
             {
