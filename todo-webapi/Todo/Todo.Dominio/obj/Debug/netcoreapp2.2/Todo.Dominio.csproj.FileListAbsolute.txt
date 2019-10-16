@@ -1,0 +1,8 @@
+C:\Users\Intel i5\Desktop\UTN\PRACTICAS\TPFinal\todo-webapi\Todo\Todo.Dominio\bin\Debug\netcoreapp2.2\Todo.Dominio.deps.json
+C:\Users\Intel i5\Desktop\UTN\PRACTICAS\TPFinal\todo-webapi\Todo\Todo.Dominio\bin\Debug\netcoreapp2.2\Todo.Dominio.dll
+C:\Users\Intel i5\Desktop\UTN\PRACTICAS\TPFinal\todo-webapi\Todo\Todo.Dominio\obj\Debug\netcoreapp2.2\Todo.Dominio.csprojAssemblyReference.cache
+C:\Users\Intel i5\Desktop\UTN\PRACTICAS\TPFinal\todo-webapi\Todo\Todo.Dominio\obj\Debug\netcoreapp2.2\Todo.Dominio.AssemblyInfoInputs.cache
+C:\Users\Intel i5\Desktop\UTN\PRACTICAS\TPFinal\todo-webapi\Todo\Todo.Dominio\obj\Debug\netcoreapp2.2\Todo.Dominio.AssemblyInfo.cs
+C:\Users\Intel i5\Desktop\UTN\PRACTICAS\TPFinal\todo-webapi\Todo\Todo.Dominio\bin\Debug\netcoreapp2.2\Todo.Dominio.pdb
+C:\Users\Intel i5\Desktop\UTN\PRACTICAS\TPFinal\todo-webapi\Todo\Todo.Dominio\obj\Debug\netcoreapp2.2\Todo.Dominio.dll
+C:\Users\Intel i5\Desktop\UTN\PRACTICAS\TPFinal\todo-webapi\Todo\Todo.Dominio\obj\Debug\netcoreapp2.2\Todo.Dominio.pdb
