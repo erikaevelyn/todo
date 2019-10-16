@@ -10,6 +10,7 @@ using Todo.Api.Dto;
 using Todo.Api.Errors;
 using Todo.Dominio.Entities;
 using Todo.Servicio.Contracts;
+using AutoMapper;
 
 namespace Todo.Api.Controllers
 {
@@ -20,12 +21,17 @@ namespace Todo.Api.Controllers
         private readonly ApplicationDbContext _context;
         private readonly ITodoRepository _todoRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ITodoService _todoService;
+        private readonly IMapper _mapper;
 
-        public TodoItemsController(ApplicationDbContext context, ITodoRepository todoRepository, UserManager<ApplicationUser> userManager)
+        public TodoItemsController(ApplicationDbContext context, ITodoRepository todoRepository, ITodoService todoService,
+            UserManager<ApplicationUser> userManager, IMapper mapper)
         {
             _context = context;
             _todoRepository = todoRepository;
             _userManager = userManager;
+            _todoService = todoService;
+            _mapper = mapper;
         }
 
         // GET: api/TodoItems
@@ -66,42 +72,19 @@ namespace Todo.Api.Controllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchTodoItem(long id, UpdateTodoItemDTO changes)
         {
-            var todoItem = await _todoRepository.GetAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound(new ErrorMessage("Invalid id"));
-            }
             switch (changes.Field)
             {
-                case "Name":
-                    todoItem.Name = changes.Value;
-                    break;
-
-                case "IsCompleted":
-                    todoItem.IsComplete = bool.Parse(changes.Value);
-                    break;
-
-                case "Responsible":
-                    var user = await _userManager.Users.Where(u => u.Id == changes.Value).FirstOrDefaultAsync();
-                    if (user != null)
-                    {
-                        todoItem.Responsible = user;
-                    }
-                    else
-                    {
-                        return BadRequest(new ErrorMessage("User not found"));
-                        //throw new System.Exception("Se pudrio todo");
-                    }
-
-                    break;
                 case "Id":
                     return Forbid();
+                case "IsCompleted":
+                    await _todoService.PatchTodo(id, changes.Field, changes.Value);
+                    break;
+                case "Responsible":
+                    await _todoService.PatchTodo(id, changes.Field, changes.Value);
+                    break;
                 default:
                     return BadRequest(new ErrorMessage("Invalid field"));
             }
-            await _todoRepository.UpdateAsync(todoItem);
-
             return NoContent();
         }
 
