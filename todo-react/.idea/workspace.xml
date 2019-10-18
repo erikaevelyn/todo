@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10943c2a-321a-4559-a6a6-0078f402218c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ToDo/ToDo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDo/ToDo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ToDo/ToDoAddItem/ToDoAddItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDo/ToDoAddItem/ToDoAddItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ToDo/ToDoItem/ToDoItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDo/ToDoItem/ToDoItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/ToDoService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ToDoService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/todoReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/todoReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ToDo/ToDoItem/ToDoItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToDo/ToDoItem/ToDoItem.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +65,7 @@
       <workItem from="1570911835125" duration="4405000" />
       <workItem from="1570926166698" duration="13000" />
       <workItem from="1570926503522" duration="2386000" />
-      <workItem from="1571357544042" duration="1432000" />
+      <workItem from="1571357544042" duration="2580000" />
     </task>
     <servers />
   </component>

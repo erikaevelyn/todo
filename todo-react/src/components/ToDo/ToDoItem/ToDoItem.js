@@ -10,7 +10,6 @@ class ToDoItem extends React.Component {
     }
 
 
-
     render() {
         return (
             <div className="container px-lg-5">
@@ -21,7 +20,12 @@ class ToDoItem extends React.Component {
                         </button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-danger" onClick={this.deleteItem.bind(this)}><i className="material-icons" color="warn">
+                        <button className="btn btn-primary" onClick={this.deleteItem.bind(this)}><i
+                            className="material-icons">
+                            edit
+                        </i></button>
+                        <button className="btn btn-danger" onClick={this.deleteItem.bind(this)}><i
+                            className="material-icons" color="warn">
                             delete_sweep
                         </i></button>
                     </div>
@@ -36,17 +40,18 @@ class ToDoItem extends React.Component {
         var parentThis = this;
         this.toDoService.deleteTarea(id)
             .then(function (response) {
-                console.log(response);
+                console.log("Tarea numero " + id + " eliminada con exito.");
                 parentThis.props.onDel(id);
             })
             .catch(function (error) {
-                console.log(error);
-            });;
+                console.log("La tarea numero " + id + " no pudo ser eliminada. Error: " + error);
+            });
+        ;
     }
 
 }
 
-var mapToActions = function(dispatch) {
+var mapToActions = function (dispatch) {
     return {
         onDel: (id) => dispatch({type: 'REMOVE_ITEM', data: id})
     }
