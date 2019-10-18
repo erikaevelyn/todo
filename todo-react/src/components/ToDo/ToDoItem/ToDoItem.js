@@ -1,5 +1,5 @@
 import React from 'react';
-import ToDoService from '../../services/ToDoService';
+import ToDoService from '../../../services/ToDoService';
 import {connect} from "react-redux";
 
 class ToDoItem extends React.Component {
@@ -8,6 +8,28 @@ class ToDoItem extends React.Component {
         super(props);
         this.toDoService = new ToDoService();
     }
+
+
+
+    render() {
+        return (
+            <div className="container px-lg-5">
+                <div className="row">
+                    <div className="col">
+                        <button type="button"
+                                className="list-group-item list-group-item-action">{this.props.itemId} - {this.props.textoTitle}
+                        </button>
+                    </div>
+                    <div className="col">
+                        <button className="btn btn-danger" onClick={this.deleteItem.bind(this)}><i className="material-icons" color="warn">
+                            delete_sweep
+                        </i></button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
 
     deleteItem() {
         var id = this.props.itemId;
@@ -22,25 +44,6 @@ class ToDoItem extends React.Component {
             });;
     }
 
-
-    render() {
-        return (
-            <div className="container px-lg-5">
-                <div className="row">
-                    <div className="col">
-                        <button type="button"
-                                className="list-group-item list-group-item-action">{this.props.itemId} - {this.props.textoTitle}
-                        </button>
-                    </div>
-                    <div className="col">
-                        <button className="btn btn-danger" onClick={this.deleteItem}><i className="material-icons" color="warn">
-                            delete_sweep
-                        </i></button>
-                    </div>
-                </div>
-            </div>
-        );
-    }
 }
 
 var mapToActions = function(dispatch) {

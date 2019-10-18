@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import ToDoItem from "./ToDoItem/ToDoItem";
 import ToDoAddItem from "./ToDoAddItem/ToDoAddItem";
-import ToDoService from '../services/ToDoService';
+import ToDoService from '../../services/ToDoService';
 
 class ToDo extends React.Component {
 

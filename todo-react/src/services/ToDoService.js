@@ -14,7 +14,7 @@ export default class ToDoService {
     }
 
     async postTarea(unToDo) {
-        if (unToDo.name=="") {
+        if (unToDo.name==="") {
             throw new Error('Debe ingresar un nombre para la tarea');
         }
         var respuesta = await this.http.post(this.serverUrl, unToDo);
@@ -22,7 +22,7 @@ export default class ToDoService {
     }
 
     async putTarea(unToDo) {
-        if (unToDo.name=="") {
+        if (unToDo.name==="") {
             throw new Error('Debe ingresar un nombre para la tarea');
         }
         var respuesta = await this.http.put(this.serverUrl + "/" + unToDo.id, unToDo);

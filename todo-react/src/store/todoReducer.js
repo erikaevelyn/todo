@@ -4,48 +4,65 @@ var toDoService = new ToDoService();
 
 const estadoInicial = {
     taskList: [],
-    token: '123'
+    token: '123',
+    responsablesList : [
+        {id: 1, nombre: 'Persona 1'},
+        {id: 2, nombre: 'Persona 2'},
+        {id: 3, nombre: 'Persona 3'},
+        {id: 4, nombre: 'Persona 4'},
+        {id: 5, nombre: 'Persona 5'}
+    ]
 }
 export default function(estadoActual = estadoInicial, action)
 {
+    var pos = 0;
     switch (action.type) {
         case 'ADD_ITEM':
-            var nuevoItem = action.data;
             return {
+                ...estadoActual,
                 taskList: [
                     ...estadoActual.taskList,
-                    nuevoItem
+                    action.data
                 ]
             }
         case 'REMOVE_ITEM':
-            var idItem = action.data;
-            const posicion = estadoActual.taskList.findIndex(item => {
-                return item.id === idItem;
+            pos = estadoActual.taskList.findIndex(unItem =>{
+                return unItem.id === action.data
             })
+
             return {
+                ...estadoActual,
                 taskList: [
-                    ...estadoActual.taskList.slice(0, posicion),
-                    ...estadoActual.taskList.slice(posicion+1),
+                    ...estadoActual.taskList.slice(0, pos),
+                    ...estadoActual.taskList.slice(pos+1)
                 ]
             }
-            return {
-                taskList: [
-                    ...estadoActual.taskList,
-                    nuevoItem
-                ]
-            }
-            break;
         case 'INIT':
             return {
+                ...estadoActual,
                 taskList: action.data
             }
+
         case 'UPDATE_ITEM':
 
-            break;
+            pos = estadoActual.taskList.findIndex(unItem =>{
+                return unItem.id === action.data.id
+            })
+
+            return {
+                ...estadoActual,
+                taskList: [
+                    ...estadoActual.taskList.slice(0, pos),
+                    action.data,
+                    ...estadoActual.taskList.slice(pos+1)
+                ]
+            }
 
         case 'SET_TOKEN':
-
-            break;
+            return {
+                ...estadoActual,
+                token: action.data
+            }
         default:
             return {...estadoActual};
     }
